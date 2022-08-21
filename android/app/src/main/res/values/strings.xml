@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">friendss_messenger</string>
+    <string name="facebook_app_id">480765283383548</string>
+    <string name="fb_login_protocol_scheme">fb480765283383548</string>
+    <string name="facebook_client_token">7edd94fe4c50f457bacd919679099960</string>
+</resources>
