@@ -1,9 +1,13 @@
+import 'dart:io';
+
+import 'package:cross_file/src/types/interface.dart';
 import 'package:friendss_messenger/locator.dart';
 import 'package:friendss_messenger/model/user_model.dart';
 import 'package:friendss_messenger/services/auth_base.dart';
 import 'package:friendss_messenger/services/fake_auth_service.dart';
 import 'package:friendss_messenger/services/firebase_auth_service.dart';
 
+import '../services/firebase_storage_services.dart';
 import '../services/firestore_db_services.dart';
 
 
@@ -13,6 +17,7 @@ class UserRepository implements AuthBase {
   FakeAuthenticationService _fakeAuthenticationService = locator<
       FakeAuthenticationService>();
   FireStoreDBService _fireStoreDBService = locator<FireStoreDBService>();
+  FirebaseStorageService _firebaseStorageService = locator<FirebaseStorageService>();
 
   AppMode appMode = AppMode.RELEASE;
 
@@ -104,6 +109,17 @@ class UserRepository implements AuthBase {
       return false;
     } else {
       return await _fireStoreDBService.updateUserName(userID, newUserName);
+    }
+  }
+
+
+  Future<String> uploadFile(String userId, String fileType, File profilFoto) async {
+    if (appMode == AppMode.DEBUG) {
+      return "dosya_indirme_linki";
+    } else {
+      var profilFotoURL = await _firebaseStorageService.uploadFile(userId, fileType, profilFoto);
+      await _fireStoreDBService.updateProfilFoto(userId, profilFotoURL);
+      return profilFotoURL;
     }
   }
 }

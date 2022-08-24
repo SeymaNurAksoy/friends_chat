@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cross_file/src/types/interface.dart';
 import 'package:flutter/material.dart';
 import 'package:friendss_messenger/locator.dart';
 import 'package:friendss_messenger/repository/user_repository.dart';
@@ -166,6 +169,11 @@ class UserModel with ChangeNotifier implements AuthBase {
       _fUser!.userName = newUserName;
     }
     return sonuc;
+  }
+
+  Future<String> uploadFile(String userId, String fileType, File profilFoto) async {
+    var indirmeLinki = await _userRepository.uploadFile(userId, fileType, profilFoto);
+    return indirmeLinki;
   }
 
 

@@ -1,7 +1,9 @@
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:friendss_messenger/common_widget/platform_sensitive_alert_dialog.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../common_widget/social_login_button.dart';
@@ -13,7 +15,7 @@ class ProfilPage extends StatefulWidget {
 }
 class _ProfilPageState extends State<ProfilPage> {
   late TextEditingController _controllerUserName;
-  late File _profilFoto;
+  File? profilFoto;
 
   @override
   void initState() {
@@ -28,28 +30,27 @@ class _ProfilPageState extends State<ProfilPage> {
   }
 
   void _kameradanFotoCek() async {
-    // var _yeniResim = await ImagePicker.pickImage(source: ImageSource.camera);
+var pickedFoto= await ImagePicker().getImage(source: ImageSource.camera);
 
     setState(() {
-      //_profilFoto = _yeniResim;
+      profilFoto= File(pickedFoto!.path);
       Navigator.of(context).pop();
     });
   }
 
   void _galeridenResimSec() async {
-    //  var _yeniResim = await ImagePicker.pickImage(source: ImageSource.gallery);
+    var pickedFoto= await ImagePicker().getImage(source: ImageSource.gallery);
+
 
     setState(() {
-      //_profilFoto = _yeniResim;
+      profilFoto= File(pickedFoto!.path);
       Navigator.of(context).pop();
     });
   }
-
   @override
   Widget build(BuildContext context) {
     UserModel _userModel = Provider.of<UserModel>(context);
     _controllerUserName.text = _userModel.fUser!.userName!;
-
     print("Profil sayfasındaki user degerleri :" + _userModel.fUser.toString());
     return Scaffold(
       appBar: AppBar(
@@ -101,7 +102,7 @@ class _ProfilPageState extends State<ProfilPage> {
                   child: CircleAvatar(
                     radius: 75,
                     backgroundColor: Colors.white,
-                    backgroundImage: NetworkImage(_userModel.fUser!.profilUrl!),
+                    backgroundImage: defImage(profilFoto,_userModel),
                   ),
                 ),
               ),
@@ -135,7 +136,7 @@ class _ProfilPageState extends State<ProfilPage> {
                   buttonText: "Değişiklikleri Kaydet",
                   onPressed: () {
                     _userNameGuncelle(context);
-                    //_profilFotoGuncelle(context);
+                    _profilFotoGuncelle(context);
                   },
                 ),
               ),
@@ -189,22 +190,32 @@ class _ProfilPageState extends State<ProfilPage> {
       }
     }
   }
-}
-/*
-void _profilFotoGuncelle(BuildContext context) async {
-  final _userModel = Provider.of<UserModel>(context, listen: false);
-  if (_profilFoto != null) {
-    var url = await _userModel.uploadFile(_userModel.user.userID, "profil_foto", _profilFoto);
-    //print("gelen url :" + url);
 
-    if (url != null) {
-      PlatformSensitiveAlertDialog(
-        title: "Başarılı",
-        content: "Profil fotoğrafınız güncellendi",
-        homeButtonText: 'Tamam',
-        cancelButtonText: "İptal",
-      ).show(context);
+  defImage(imageXFile,_userModel) {
+    if(imageXFile == null){
+     return NetworkImage(_userModel.fUser!.profilUrl!);
+    }else{
+
+     return  FileImage(File(imageXFile!.path));
+    }
+  }
+  void _profilFotoGuncelle(BuildContext context) async {
+    final _userModel = Provider.of<UserModel>(context, listen: false);
+    if (profilFoto != null) {
+      var url = await _userModel.uploadFile(_userModel.fUser!.userId, "profil_foto", profilFoto!);
+      //print("gelen url :" + url);
+
+      if (url != null) {
+        PlatformSensitiveAlertDialog(
+          title: "Başarılı",
+          content: "Profil fotoğrafınız güncellendi",
+          homeButtonText: 'Tamam',
+          cancelButtonText: "İptal",
+        ).show(context);
+      }
     }
   }
 }
-*/
+
+/**/
+
