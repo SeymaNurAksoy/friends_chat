@@ -25,6 +25,7 @@ class FUser {
       "seviye" :seviye ?? 1
     };
   }
+  FUser.idveResim({required this.userId, required this.profilUrl});
 
   FUser.fromMap(Map<String,dynamic> map):
       userId = map["userID"],

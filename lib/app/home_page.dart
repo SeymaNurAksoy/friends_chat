@@ -5,8 +5,11 @@ import 'package:friendss_messenger/app/profile.dart';
 import 'package:friendss_messenger/app/tab_items.dart';
 import 'package:friendss_messenger/app/users_home_page.dart';
 import 'package:friendss_messenger/model/user_model.dart';
+import 'package:friendss_messenger/view_model/all_users_view_model.dart';
 import 'package:friendss_messenger/view_model/user_model.dart';
 import 'package:provider/provider.dart';
+
+import 'my_talks.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -22,12 +25,15 @@ class _HomePageState extends State<HomePage>{
   TabItem _currentTab = TabItem.Kullanicilar;
   Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
     TabItem.Kullanicilar: GlobalKey<NavigatorState>(),
-    //TabItem.Konusmalarim: GlobalKey<NavigatorState>(),
+    TabItem.Konusmalarim: GlobalKey<NavigatorState>(),
     TabItem.Profil: GlobalKey<NavigatorState>(),
   };
   Map<TabItem,Widget> allPage () {
     return{
-      TabItem.Kullanicilar : UsersHomePage(),
+      TabItem.Kullanicilar: ChangeNotifierProvider(
+        create: (context) => AllUserViewModel(),
+        child: UsersPage(),
+      ),      TabItem.Konusmalarim: MyTalks(),
       TabItem.Profil: ProfilPage(),
     };
   }

@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:cross_file/src/types/interface.dart';
 import 'package:flutter/material.dart';
 import 'package:friendss_messenger/locator.dart';
+import 'package:friendss_messenger/model/message.dart';
+import 'package:friendss_messenger/model/talk.dart';
 import 'package:friendss_messenger/repository/user_repository.dart';
 import 'package:friendss_messenger/services/auth_base.dart';
 
@@ -176,6 +178,21 @@ class UserModel with ChangeNotifier implements AuthBase {
     return indirmeLinki;
   }
 
+  Future<List<FUser?>?> getAllUser() async {
+    var allUser = await _userRepository.getAllUser();
+    return allUser;
+  }
+
+  Stream<List<Message>> getMessages(String currentUser,String callUser) {
+    return _userRepository.getMessage(currentUser,callUser);
+  }
+
+  Future<bool> saveMessage(Message saveMessage) {
+    return _userRepository.saveMessage(saveMessage);
+  }
+  Future<List<Talk>> getAllConversations(String userID) async {
+    return await _userRepository.getAllConversations(userID);
+  }
 
 
 }

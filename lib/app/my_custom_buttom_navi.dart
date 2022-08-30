@@ -18,6 +18,7 @@ class MyCustomBottomNavigation extends StatelessWidget {
       tabBar: CupertinoTabBar(
       items: [
         _navigationBarItemCreate(TabItem.Kullanicilar),
+        _navigationBarItemCreate(TabItem.Konusmalarim),
         _navigationBarItemCreate(TabItem.Profil),
       ],
       onTap: (index)=> onSelectedTab(TabItem.values[index]),
