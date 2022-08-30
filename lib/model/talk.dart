@@ -27,6 +27,7 @@ class Talk {
       'goruldu': goruldu,
       'olusturulma_tarihi': olusturulma_tarihi ?? FieldValue.serverTimestamp(),
       'son_yollanan_mesaj': son_yollanan_mesaj ?? FieldValue.serverTimestamp(),
+      'konusulanUserProfilURL': konusulanUserProfilURL,
       //'gorulme_tarihi': gorulme_tarihi,
     };
   }
@@ -36,7 +37,8 @@ class Talk {
         kimle_konusuyor = map['kimle_konusuyor'],
         goruldu = map['konusma_goruldu'],
         olusturulma_tarihi = map['olusturulma_tarihi'],
-        son_yollanan_mesaj = map['son_yollanan_mesaj'];
+        son_yollanan_mesaj = map['son_yollanan_mesaj'],
+        konusulanUserProfilURL = map["konusulanUserProfilURL"];
        // gorulme_tarihi = map['gorulme_tarihi'];
 
   @override
