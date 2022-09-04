@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
   State<StatefulWidget> createState() => _HomePageState();
 
 }
+
 class _HomePageState extends State<HomePage>{
 
   TabItem _currentTab = TabItem.Kullanicilar;
@@ -36,6 +37,12 @@ class _HomePageState extends State<HomePage>{
       ),      TabItem.Konusmalarim: MyTalks(),
       TabItem.Profil: ProfilPage(),
     };
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
   }
   @override
   Widget build(BuildContext context) {

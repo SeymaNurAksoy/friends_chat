@@ -45,9 +45,17 @@ dependencies:
   firebase_storage: ^10.3.6
   intl: ^0.17.0
   timeago: ^3.3.0
+  flutter_launcher_icons: ^0.10.0
+  firebase_messaging: ^13.0.0
+  flutter_local_notifications: ^9.6.1
+  http: ^0.13.5
+  path_provider: ^2.0.11
 
 
-
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/chat.png"
 dev_dependencies:
   flutter_test:
     sdk: flutter

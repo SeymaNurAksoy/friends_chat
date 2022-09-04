@@ -40,19 +40,27 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Friends Find"),
+        title: Text("FRİENDS MESSENGER"),
         //aşağıda ki gölgelik
         elevation: 1,
       ),
       backgroundColor: Colors.grey.shade100,
       body: Container(
+
         padding: EdgeInsets.all((16.0)),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children:   <Widget>[
-            const Text("Oturum Açınız",textAlign: TextAlign.center,
+            const Text("MERHABA ARKADAŞIM 😎",textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32
+              ),
+            ),
+            new Image.asset("images/chat.png",cacheHeight: 300,cacheWidth: 300),
+            const Text("OTURUM AÇMAYA NE DERSİN 🥰 ",textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 32
@@ -64,19 +72,19 @@ class SignInPage extends StatelessWidget {
               SocialLogInButton(
               buttonIcon: Image.asset("images/google.png",height: 30,width: 30),
               buttonColor: Colors.white,
-              buttonText: "Google İle Oturum Açınız",
+              buttonText: "Google İle Oturum Aç",
               radius: 16,
               onPressed: ()=> _googleWithSign(context),
               textColor: Colors.black87,
             ),
-            SocialLogInButton(
+            /*SocialLogInButton(
               buttonIcon: Image.asset("images/facebook.png",height: 30,width: 30),
               buttonColor: Color(0xFF334D92),
               buttonText: "Facebook İle Oturum Açınız",
               radius: 16,
               onPressed: ()=>_facebookWithSign(context),
               textColor: Colors.white,
-            ),
+            ),*/
             SocialLogInButton(
               buttonIcon: Icon(Icons.email,color: Colors.white,size: 35,),
               buttonColor: Colors.teal,
@@ -85,14 +93,14 @@ class SignInPage extends StatelessWidget {
               onPressed: ()=> _emailAndPasswordlogin(context),
               textColor: Colors.white,
             ),
-            SocialLogInButton(
+          /*  SocialLogInButton(
               buttonIcon: Icon(Icons.supervised_user_circle,size: 35,color: Colors.white),
               buttonColor: Colors.deepOrangeAccent,
               buttonText: "Misafir Girişi",
               radius: 16,
               onPressed: () => _misafirGirisi(context),
               textColor: Colors.white,
-            ),
+            ),*/
 
           ],
         ),

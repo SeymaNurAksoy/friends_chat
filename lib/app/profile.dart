@@ -54,7 +54,7 @@ var pickedFoto= await ImagePicker().getImage(source: ImageSource.camera);
     print("Profil sayfasındaki user degerleri :" + _userModel.fUser.toString());
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profil"),
+        title: Text("PROFİL"),
         actions: <Widget>[
           FlatButton(
             onPressed: () => _askForConfirmationToExit(context),

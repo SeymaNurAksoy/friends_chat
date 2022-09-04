@@ -46,11 +46,12 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => UserModel(),
       child: MaterialApp(
-          title: 'Flutter Lovers',
+          title: 'Friendss Messeger',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primarySwatch: Colors.purple,
+            primarySwatch: Colors.deepOrange,
           ),
+
           home: LandingPage()),
     );
   }

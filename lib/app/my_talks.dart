@@ -52,7 +52,7 @@ class _MyTalksState extends State<MyTalks> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Konusmalarım"),
+        title: Text("KONUŞMALARIM"),
       ),
       body: FutureBuilder<List<Talk>>(
         future: _userModel.getAllConversations(_userModel.fUser!.userId),

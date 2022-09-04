@@ -25,7 +25,7 @@ class _UsersPageState extends State<UsersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Kullanicilar"),
+        title: Text("KULLANICILAR"),
       ),
       body: Consumer<AllUserViewModel>(
         builder: (context, model, child) {
@@ -113,7 +113,12 @@ class _UsersPageState extends State<UsersPage> {
         );
       },
       child: Card(
+        color: Color.fromARGB(186, 255, 251, 126),
+        shadowColor: Colors.orangeAccent,
+        borderOnForeground: true,
+        semanticContainer: true,
         child: ListTile(
+          focusColor: Colors.deepOrange,
           title: Text(_oankiUser.userName!),
           subtitle: Text(_oankiUser.email!),
           leading: CircleAvatar(

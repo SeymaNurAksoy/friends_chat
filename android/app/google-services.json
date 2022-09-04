@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1021430311327",
+    "project_id": "friendssmessenger",
+    "storage_bucket": "friendssmessenger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021430311327:android:b9e0568d6c9fb0ecaef5aa",
+        "android_client_info": {
+          "package_name": "com.example.friendss_messenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021430311327-fv432ads0qp4ib3hd6a6dutp7qckucc9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.friendss_messenger",
+            "certificate_hash": "d245f9116699d890b67ddcc31f4d829919e910a1"
+          }
+        },
+        {
+          "client_id": "1021430311327-dkqcacgbohsloke547epqeq1mkjm5btd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsxbV6s-d-9jj9tejEBURytq0b8qIpeEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021430311327-dkqcacgbohsloke547epqeq1mkjm5btd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
